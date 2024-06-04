@@ -1,6 +1,5 @@
 #include "ablak.hpp"
 #include "szamlalo.hpp"
-#include "szoveg.hpp"
 #include "button.hpp"
 #include "osszekapcsolo.hpp"
 #include "torol.hpp"
@@ -19,13 +18,14 @@ void Ablak::rajzol()
 {
     event ev;
     gout.open(XX,YY);
-    Widget* szam=new szamlalo(100,100,300,100,0,10);
+    gout<<font("LiberationSans-Regular.ttf",50)<<move_to(200,100+gout.cascent()/2)<<text("Mennyiseg:");
+    Widget* szam=new szamlalo(500,100,300,100,1,10);
     v.push_back(szam);
-    Widget* gomb=new button(350,300);
+    Widget* gomb=new button(50,300);
     v.push_back(gomb);
-    Widget* lis=new Osszekapcsolo(250,500,e);
+    Widget* lis=new Osszekapcsolo(250,450,e);
     v.push_back(lis);
-    Widget* feltolt=new Torol(700,300);
+    Widget* feltolt=new Torol(550,300);
     v.push_back(feltolt);
     string alapanyag[5]={"vanilia","tutti-frutti","karamell","rumosodo","kave"};
     for(int i=0;i<5;i++)
@@ -44,6 +44,11 @@ void Ablak::rajzol()
         Torol* felt=dynamic_cast<Torol*>(feltolt);
         szamlalo* sz=dynamic_cast<szamlalo*>(szam);
         Osszekapcsolo* ossze=dynamic_cast<Osszekapcsolo*>(lis);
+        if(ossze&&sz&&kiad&&kiad->hozzaadki()) {e[ossze->idki()]->ertek-=sz->aktualiski();}
+        if(ossze&&sz&&kiad&&felt->torles())
+        {
+            for(auto a:e) {a->ertek=10;}
+        }
         gout<<refresh;
     }
 }

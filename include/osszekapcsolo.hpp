@@ -27,7 +27,6 @@ public:
     void esemenyKezeles(genv::event ev) override;
     bool rajta(int egerx, int egery) override;
     int idki();
-    std::string valasztottki();
     ~Osszekapcsolo() {}
 };
 

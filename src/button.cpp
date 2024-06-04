@@ -3,7 +3,7 @@
 using namespace std;
 using namespace genv;
 
-button::button(int x_, int y_):Widget(x_,y_), sz(300), m(100), szoveg("Kiad") {hozzaad=false;}
+button::button(int x_, int y_):Widget(x_,y_), sz(400), m(100), szoveg("Kiad") {hozzaad=false;}
 
 bool button::rajta(int egerx, int egery)
 {

@@ -10,7 +10,7 @@ szamlalo::szamlalo(int x_, int y_, int sz_, int m_, int alsohatar, int felsohata
     box_x = x+sz-50;
     box_y =y+5;
     box_y2 = box_y + m/2;
-    aktualis=0;
+    aktualis=1;
 }
 
 void szamlalo::rajzol()
