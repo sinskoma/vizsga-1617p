@@ -1,0 +1,12 @@
+
+/bin/Debug
+/graphicslib
+*.h
+*.a
+*.la
+*.dll
+*.o
+*.layout
+*.depend
+*.cbp
+*.ttf
