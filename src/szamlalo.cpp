@@ -10,7 +10,7 @@ szamlalo::szamlalo(int x_, int y_, int sz_, int m_, int alsohatar, int felsohata
     box_x = x+sz-50;
     box_y =y+5;
     box_y2 = box_y + m/2;
-    aktualis=15;
+    aktualis=0;
 }
 
 void szamlalo::rajzol()
@@ -61,8 +61,8 @@ void szamlalo::esemenyKezeles(event ev)
     {
         if (ev.keycode == key_up || ev.button == btn_wheelup || (rajta2(ev.pos_x, ev.pos_y) && ev.button == btn_left)) {aktualis++;}
         else if (ev.keycode == key_down || ev.button == btn_wheeldown || (rajta3(ev.pos_x, ev.pos_y) && ev.button == btn_left)) {aktualis--;}
-        else if (ev.keycode == key_pgup) {aktualis += 100;}
-        else if (ev.keycode == key_pgdn) {aktualis -= 100;}
+        else if (ev.keycode == key_pgup) {aktualis += 5;}
+        else if (ev.keycode == key_pgdn) {aktualis -= 5;}
     }
     hatarok();
 }

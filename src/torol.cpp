@@ -3,7 +3,7 @@
 using namespace std;
 using namespace genv;
 
-Torol::Torol(int x_, int y_):Widget(x_,y_), sz(250), m(100), szoveg("Torol") {hozzaad=false;}
+Torol::Torol(int x_, int y_):Widget(x_,y_), sz(250), m(100), szoveg("Feltolt") {hozzaad=false;}
 
 bool Torol::rajta(int egerx, int egery)
 {
