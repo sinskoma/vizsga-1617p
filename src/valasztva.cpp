@@ -1,6 +1,6 @@
 #include "Valasztva.hpp"
 
-Valasztva::Valasztva(int x_, int y_, std::string s) : x(x_), y(y_), szoveg(s) {hossz = 500; mag = 100;}
+Valasztva::Valasztva(int x_, int y_, std::string s) : x(x_), y(y_), szoveg(s) {hossz = 450; mag = 100;}
 
 using namespace genv;
 using namespace std;

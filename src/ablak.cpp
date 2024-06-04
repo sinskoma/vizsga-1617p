@@ -3,6 +3,7 @@
 #include "button.hpp"
 #include "osszekapcsolo.hpp"
 #include "torol.hpp"
+#include <iostream>
 
 using namespace genv;
 using namespace std;
@@ -18,14 +19,14 @@ void Ablak::rajzol()
 {
     event ev;
     gout.open(XX,YY);
-    gout<<font("LiberationSans-Regular.ttf",50)<<move_to(200,100+gout.cascent()/2)<<text("Mennyiseg:");
-    Widget* szam=new szamlalo(500,100,300,100,1,10);
+    gout<<font("LiberationSans-Regular.ttf",50)<<move_to(200,50+gout.cascent()/2)<<text("Mennyiseg:");
+    Widget* szam=new szamlalo(500,50,300,100,1,10);
     v.push_back(szam);
-    Widget* gomb=new button(50,300);
+    Widget* gomb=new button(50,200);
     v.push_back(gomb);
-    Widget* lis=new Osszekapcsolo(250,450,e);
+    Widget* lis=new Osszekapcsolo(250,350,e);
     v.push_back(lis);
-    Widget* feltolt=new Torol(550,300);
+    Widget* feltolt=new Torol(550,200);
     v.push_back(feltolt);
     string alapanyag[5]={"vanilia","tutti-frutti","karamell","rumosodo","kave"};
     for(int i=0;i<5;i++)
@@ -47,8 +48,18 @@ void Ablak::rajzol()
         if(ossze&&sz&&kiad&&kiad->hozzaadki()) {e[ossze->idki()]->ertek-=sz->aktualiski();}
         if(ossze&&sz&&kiad&&felt->torles())
         {
-            for(auto a:e) {a->ertek=10;}
+            e.erase(e.begin(),e.end());
+            for(int i=0;i<5;i++)
+            {
+                Elem* idg=new Elem(alapanyag[i],10);
+                e.push_back(idg);
+            }
         }
+        for(int i=0;i<e.size();i++)
+        {
+            if(e[i]->ertek<=0) e.erase(e.begin()+i);
+        }
+        cout<<e.size()<<endl;
         gout<<refresh;
     }
 }
