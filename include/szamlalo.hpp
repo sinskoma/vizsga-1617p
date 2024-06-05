@@ -7,7 +7,7 @@
 class szamlalo : public Widget
 {
 protected:
-    int box_x, box_y, box_y2, box_meret,sz,m,aktualis,alhat,felhat;
+    int box_x, box_y, box_y2, box_meret,sz,m,aktualis,alhat,felhat; bool kijelolve;
 public:
     szamlalo(int x_, int y_, int sz_, int m_, int alsohatar, int felsohatar);
     void rajzol() override;

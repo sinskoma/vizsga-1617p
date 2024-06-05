@@ -4,20 +4,13 @@
 #include <vector>
 #include "widget.hpp"
 #include "graphics.hpp"
-
 #include "lista.hpp"
-#include "nyil.hpp"
 #include "valasztva.hpp"
-#include "oldal.hpp"
 #include "ablak.hpp"
 
 class Osszekapcsolo : public Widget {
 protected:
-    Nyil nyil;
-    Oldal oldal;
     Valasztva valasztva;
-    bool lista;
-    int gorgo;
     int id;
     std::vector<Ablak::Elem*>& elemek;
 

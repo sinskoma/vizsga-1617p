@@ -5,7 +5,7 @@
 
 class Lista {
 private:
-    int x, y, hossz, mag, sorszam, gorgo, osszeg;
+    int x, y, hossz, mag, sorszam, osszeg;
     bool kijelol;
     std::string szoveg;
 

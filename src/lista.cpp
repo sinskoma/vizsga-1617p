@@ -4,10 +4,9 @@ using namespace genv;
 using namespace std;
 
 Lista::Lista(int x_, int y_, int s, string sz, int osszeg_) : x(x_), y(y_), sorszam(s), szoveg(sz), osszeg(osszeg_) {
-    gorgo = 0;
     sorszam++;
     hossz = 450;
-    mag = 100;
+    mag = 80;
     y += sorszam * mag + 1;
     kijelol = false;
 }
@@ -20,8 +19,8 @@ void Lista::rajzol() {
     } else {
         c << color(255, 200, 200);
     }
-    c << box_to(hossz - 3, mag - 3) << move_to(20, 20) << font("LiberationSans-Regular.ttf", 50) << color(0, 0, 0) << text(szoveg)<<
-    move_to(hossz-20-gout.twidth(to_string(osszeg)),20)<<text(to_string(osszeg));
+    c << box_to(hossz - 3, mag - 3) << move_to(20, 10) << font("LiberationSans-Regular.ttf", 50) << color(0, 0, 0) << text(szoveg)<<
+    move_to(hossz-20-gout.twidth(to_string(osszeg)),10)<<text(to_string(osszeg));
     gout << stamp(c,x,y);
 }
 

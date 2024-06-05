@@ -10,13 +10,16 @@ szamlalo::szamlalo(int x_, int y_, int sz_, int m_, int alsohatar, int felsohata
     box_x = x+sz-50;
     box_y =y+5;
     box_y2 = box_y + m/2;
-    aktualis=1;
+    aktualis=0;
+    kijelolve=false;
 }
 
 void szamlalo::rajzol()
 {
-    gout << move_to(x, y) << color(255, 255, 255) << box(sz, m)
-         << move_to(x + 1, y + 1) << color(255, 255, 255) << box(sz - 2, m - 2)
+    gout<<color(255,255,255);
+    if(kijelolve) {gout<<color(200,200,200);}
+    gout << move_to(x, y) << box(sz, m)
+         << move_to(x + 1, y + 1) << box(sz - 2, m - 2)
          << color(0, 0, 0) << move_to(x+sz/2-gout.twidth(to_string(aktualis))/2-20,y+20) <<font("LiberationSans-Regular.ttf",50)<< text(to_string(aktualis));
 
     canvas c(box_meret + 1, box_meret + 1);
@@ -56,14 +59,29 @@ void szamlalo::hatarok()
 }
 void szamlalo::esemenyKezeles(event ev)
 {
+    if(rajta(ev.pos_x, ev.pos_y)&&ev.button==btn_left) {kijelolve=true;}
+    else if(!rajta(ev.pos_x, ev.pos_y)&&ev.button==btn_left) {kijelolve=false;}
     rajzol();
-    if (rajta(ev.pos_x, ev.pos_y)||ev.type==ev_key)
+    if (kijelolve)
     {
-        if (ev.keycode == key_up || ev.button == btn_wheelup || (rajta2(ev.pos_x, ev.pos_y) && ev.button == btn_left)) {aktualis++;}
-        else if (ev.keycode == key_down || ev.button == btn_wheeldown || (rajta3(ev.pos_x, ev.pos_y) && ev.button == btn_left)) {aktualis--;}
-        else if (ev.keycode == key_pgup) {aktualis += 5;}
-        else if (ev.keycode == key_pgdn) {aktualis -= 5;}
+        if (ev.button == btn_wheelup || (rajta2(ev.pos_x, ev.pos_y) && ev.button == btn_left)) {
+            aktualis++;
+        } else if (ev.button == btn_wheeldown || (rajta3(ev.pos_x, ev.pos_y) && ev.button == btn_left)) {
+            aktualis--;
+        }
     }
+
+    if (kijelolve&&ev.type == ev_key) {
+            if (ev.keycode == key_up) {
+                aktualis++;
+            } else if (ev.keycode == key_down) {
+                aktualis--;
+            } else if (ev.keycode == key_pgup) {
+                aktualis += 10;
+            } else if (ev.keycode == key_pgdn) {
+                aktualis -= 10;
+            }
+        }
     hatarok();
 }
 int szamlalo::aktualiski() {return aktualis;}

@@ -6,13 +6,13 @@
 class button:public Widget
 {
     protected:
-        int sz,m; bool kijelol, hozzaad; std::string szoveg;
+        int sz,m; bool kijelol, lenyomva; std::string szoveg;
     public:
-        button(int x_, int y_);
+        button(int x_, int y_, int sz_, int m_, std::string szoveg_);
         void rajzol() override;
         bool rajta(int egerx, int egery) override;
         void esemenyKezeles(genv::event ev) override;
-        bool hozzaadki();
+        bool lenyomvaki();
         virtual ~button();
 };
 

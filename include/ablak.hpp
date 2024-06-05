@@ -23,6 +23,7 @@ protected:
     int egyenleg;
     std::vector<Widget*> v;
     std::vector<Elem*> e;
+    std::vector<Elem*> ar;
 };
 
 #endif // ABLAK_HPP_INCLUDED
