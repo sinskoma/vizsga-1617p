@@ -1,5 +1,4 @@
 #include "szoveg.hpp"
-#include <iostream>
 
 using namespace std;
 using namespace genv;
@@ -18,7 +17,6 @@ void Szoveg::rajzol()
     gout << move_to(x, y) << color(81, 81, 81) << box(box_sz,box_m);
     gout << move_to(x+box_sz/2-sz/2, y+25) << color(255, 255, 255) << text(t);
     if (kijelolve) {kurzor();}
-    if(sz<300) {gout<<color(81,81,81)<<move_to(x+sz+30,y)<<box(30,box_m);}
 }
 
 bool Szoveg::rajta(int egerx, int egery)
@@ -29,7 +27,6 @@ bool Szoveg::rajta(int egerx, int egery)
 
 void Szoveg::esemenyKezeles(event ev)
 {
-    cout<<sz<<endl;
     if (ev.type == ev_mouse && ev.button == btn_left)
     {
         if (rajta(ev.pos_x, ev.pos_y)) {kijelolve = true;}
